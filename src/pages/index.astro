@@ -25,7 +25,7 @@ const interets = ["Lecture", "Dessin", "Jeux vidéo"];
         <h1
           class="mb-5 text-4xl font-bold leading-tight md:text-4xl lg:text-6xl dark:text-white"
         >
-          Bonjour, je m'appelle Maloe.
+          Bonjour, je m'appelle <span class="text-accent dark:text-accent-light">Maloe</span>.
         </h1>
         <p class="mb-6 text-base text-neutral-600 dark:text-neutral-400">
           Je suis élève en 10H G au CO de la Veveyse, à Châtel-St-Denis en
@@ -39,13 +39,13 @@ const interets = ["Lecture", "Dessin", "Jeux vidéo"];
           class="py-2 space-y-[3px] text-sm list-disc list-inside text-neutral-500 dark:text-neutral-400"
         >
           <li>
-            <a class="hover:text-neutral-900 dark:hover:text-white" href="tel:+41766178337"
+            <a class="hover:text-accent dark:hover:text-accent-light" href="tel:+41766178337"
               >+41 76 617 83 37</a
             >
           </li>
           <li>
             <a
-              class="hover:text-neutral-900 dark:hover:text-white"
+              class="hover:text-accent dark:hover:text-accent-light"
               href="mailto:maloe.decastel@gmail.com">maloe.decastel@gmail.com</a
             >
           </li>
@@ -108,12 +108,12 @@ const interets = ["Lecture", "Dessin", "Jeux vidéo"];
       {
         parcours.map((etape) => (
           <li class="relative">
-            <span class="absolute -left-[35px] top-2 h-3 w-3 rounded-full bg-neutral-900 ring-4 ring-white dark:bg-white dark:ring-neutral-950" />
+            <span class="absolute -left-[35px] top-2 h-3 w-3 rounded-full bg-accent ring-4 ring-white dark:bg-accent-light dark:ring-neutral-950" />
             <div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
               <h3 class="text-base font-semibold text-neutral-900 dark:text-neutral-100">
                 {etape.etablissement}
               </h3>
-              <span class="text-xs uppercase tracking-widest text-neutral-500 dark:text-neutral-400">
+              <span class="text-xs uppercase tracking-widest text-accent dark:text-accent-light">
                 {etape.dates}
               </span>
             </div>
@@ -165,7 +165,7 @@ const interets = ["Lecture", "Dessin", "Jeux vidéo"];
         <div class="flex flex-wrap gap-2">
           {
             interets.map((interet) => (
-              <span class="rounded-full border border-neutral-300 px-3 py-1.5 text-sm text-neutral-700 dark:border-neutral-700 dark:text-neutral-300">
+              <span class="rounded-full border border-accent/25 bg-accent-soft px-3 py-1.5 text-sm text-accent dark:border-accent/30 dark:bg-accent-night dark:text-accent-light">
                 {interet}
               </span>
             ))
@@ -177,7 +177,7 @@ const interets = ["Lecture", "Dessin", "Jeux vidéo"];
 
   <section class="max-w-4xl mx-auto mt-24 px-7 lg:px-0">
     <div
-      class="rounded-2xl border border-dashed border-neutral-300 p-8 dark:border-neutral-700"
+      class="rounded-2xl border border-dashed border-accent/30 bg-accent-soft/60 p-8 dark:border-accent/30 dark:bg-accent-night"
     >
       <h2
         class="text-2xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100"
