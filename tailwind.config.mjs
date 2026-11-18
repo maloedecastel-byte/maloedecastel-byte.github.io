@@ -6,10 +6,13 @@ export default {
 		extend: {
 			colors: {
 				accent: {
-					DEFAULT: "#7471b3",
-					light: "#c3bfe6",
-					soft: "#f4f3fb",
-					night: "#191831",
+					// Surfaces, filets et puces : ton très désaturé
+					DEFAULT: "#7a79a3",
+					// Texte et boutons : même teinte, plus profonde pour rester lisible
+					deep: "#5f5d84",
+					light: "#cfcde6",
+					soft: "#f6f5fa",
+					night: "#1a1926",
 				},
 			},
 		},
