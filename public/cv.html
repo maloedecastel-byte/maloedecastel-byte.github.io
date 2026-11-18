@@ -80,6 +80,13 @@
 
   section { break-inside: avoid; }
 
+  /* Aère les sections de la colonne principale (Profil / Expérience / Formation) */
+  main {
+    display: flex;
+    flex-direction: column;
+    gap: 10mm;
+  }
+
   h2 {
     margin: 0 0 4mm;
     font-size: 10pt;
@@ -233,7 +240,7 @@
 
         <div class="bloc">
           <h3>Stage en programmation</h3>
-          <p class="meta">Aptitude · 2026</p>
+          <p class="meta">Apptitude</p>
           <ul>
             <li>Découverte du métier de développeur et des méthodes de travail.</li>
             <li>Premiers exercices de programmation encadrés.</li>
