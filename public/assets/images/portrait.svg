@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 790 1189" role="img" aria-label="Emplacement de la photo de profil">
+  <defs>
+    <linearGradient id="fond" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#e6edf5" />
+    </linearGradient>
+  </defs>
+  <rect width="790" height="1189" rx="24" fill="url(#fond)" />
+  <g fill="none" stroke="#c3d2e0" stroke-width="3" stroke-dasharray="10 10">
+    <rect x="28" y="28" width="734" height="1133" rx="16" />
+  </g>
+  <circle cx="395" cy="520" r="132" fill="#ffffff" stroke="#d6e2ee" stroke-width="3" />
+  <text x="395" y="520" text-anchor="middle" dominant-baseline="central"
+        font-family="Helvetica Neue, Arial, sans-serif" font-size="104" font-weight="700"
+        fill="#1b5b8f" letter-spacing="4">MD</text>
+  <text x="395" y="720" text-anchor="middle"
+        font-family="Helvetica Neue, Arial, sans-serif" font-size="34" font-weight="600"
+        fill="#14212e" letter-spacing="1">Maloe Decastel</text>
+  <text x="395" y="775" text-anchor="middle"
+        font-family="Helvetica Neue, Arial, sans-serif" font-size="24"
+        fill="#5c6f7f" letter-spacing="2">CHÂTEL-ST-DENIS, SUISSE</text>
+  <text x="395" y="1080" text-anchor="middle"
+        font-family="Helvetica Neue, Arial, sans-serif" font-size="20" fill="#8a9aa8"
+        letter-spacing="1">Emplacement de la photo</text>
+</svg>

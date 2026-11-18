@@ -1,0 +1,32 @@
+[
+	{
+		"niveau": "École secondaire",
+		"dates": "2026 — aujourd'hui",
+		"etablissement": "CO de la Veveyse",
+		"cycle": "10H G"
+	},
+	{
+		"niveau": "École secondaire",
+		"dates": "2025 — 2026",
+		"etablissement": "CO de la Veveyse",
+		"cycle": "9H G"
+	},
+	{
+		"niveau": "École primaire",
+		"dates": "2020 — 2025",
+		"etablissement": "Attalens",
+		"cycle": "3H — 8H"
+	},
+	{
+		"niveau": "École primaire",
+		"dates": "2018 — 2020",
+		"etablissement": "Ursy",
+		"cycle": "2H — 3H"
+	},
+	{
+		"niveau": "École primaire",
+		"dates": "2016 — 2017",
+		"etablissement": "Remaufens",
+		"cycle": "1H — 2H"
+	}
+]

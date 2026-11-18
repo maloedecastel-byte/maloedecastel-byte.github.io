@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CV — Maloe Decastel</title>
+<style>
+  :root {
+    --encre: #14212e;
+    --doux: #4b5c6b;
+    --accent: #1b5b8f;
+    --filet: #dfe7ee;
+    --panneau: #f5f8fb;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #e9edf1;
+    font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+    color: var(--encre);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 8mm auto;
+    padding: 16mm 15mm;
+    background: #ffffff;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, .18);
+    display: flex;
+    flex-direction: column;
+    gap: 9mm;
+  }
+
+  /* ---------- En-tête ---------- */
+  header { border-bottom: 1px solid var(--filet); padding-bottom: 7mm; }
+
+  h1 {
+    margin: 0;
+    font-size: 32pt;
+    font-weight: 700;
+    letter-spacing: .5pt;
+    line-height: 1.05;
+    text-transform: uppercase;
+  }
+
+  h1 span { color: var(--accent); }
+
+  .poste {
+    margin: 3mm 0 0;
+    font-size: 11pt;
+    font-weight: 500;
+    letter-spacing: 2.2pt;
+    text-transform: uppercase;
+    color: var(--doux);
+  }
+
+  .contact {
+    margin-top: 5mm;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2mm 6mm;
+    font-size: 9.5pt;
+    color: var(--doux);
+  }
+
+  .contact a { color: var(--doux); text-decoration: none; }
+
+  /* ---------- Corps ---------- */
+  .corps {
+    display: grid;
+    grid-template-columns: 1.9fr 1fr;
+    gap: 12mm;
+    flex: 1;
+  }
+
+  section { break-inside: avoid; }
+
+  h2 {
+    margin: 0 0 4mm;
+    font-size: 10pt;
+    font-weight: 600;
+    letter-spacing: 2pt;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 3mm;
+  }
+
+  h2::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--filet);
+  }
+
+  .bloc { margin-bottom: 5.5mm; }
+  .bloc:last-child { margin-bottom: 0; }
+
+  .bloc h3 {
+    margin: 0;
+    font-size: 11pt;
+    font-weight: 600;
+  }
+
+  .bloc .meta {
+    margin: .8mm 0 1.6mm;
+    font-size: 8.5pt;
+    letter-spacing: .8pt;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .bloc p {
+    margin: 0;
+    font-size: 9.5pt;
+    line-height: 1.55;
+    color: var(--doux);
+  }
+
+  .bloc ul {
+    margin: 1.5mm 0 0;
+    padding-left: 4mm;
+    font-size: 9.5pt;
+    line-height: 1.55;
+    color: var(--doux);
+  }
+
+  .bloc li { margin-bottom: .8mm; }
+
+  /* ---------- Colonne latérale ---------- */
+  .cote {
+    background: var(--panneau);
+    border-radius: 3mm;
+    padding: 6mm 6mm 4mm;
+    align-self: start;
+  }
+
+  .cote > section { margin-bottom: 7mm; }
+  .cote > section:last-child { margin-bottom: 0; }
+
+  .competences { display: flex; flex-wrap: wrap; gap: 1.8mm; }
+
+  .tag {
+    font-size: 8.5pt;
+    padding: 1.2mm 2.6mm;
+    border: 1px solid #cfdde9;
+    border-radius: 20px;
+    background: #ffffff;
+    color: var(--encre);
+    white-space: nowrap;
+  }
+
+  .langue {
+    display: flex;
+    justify-content: space-between;
+    gap: 3mm;
+    font-size: 9.5pt;
+    padding-bottom: 1.6mm;
+    margin-bottom: 1.6mm;
+    border-bottom: 1px solid #e1e9f0;
+  }
+
+  .langue:last-child { border-bottom: 0; margin-bottom: 0; padding-bottom: 0; }
+
+  .langue span:last-child { color: var(--doux); text-align: right; }
+
+  .liste-simple {
+    margin: 0;
+    padding-left: 4mm;
+    font-size: 9.5pt;
+    line-height: 1.6;
+    color: var(--doux);
+  }
+
+  /* ---------- Impression ---------- */
+  @page { size: A4; margin: 0; }
+
+  @media print {
+    html, body { background: #fff; }
+    .page {
+      margin: 0;
+      box-shadow: none;
+      width: 210mm;
+      height: 297mm;
+    }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+
+  @media screen and (max-width: 800px) {
+    .page { width: 100%; min-height: 0; padding: 10mm; margin: 0; }
+    .corps { grid-template-columns: 1fr; gap: 8mm; }
+    .cote { padding: 5mm; }
+    h1 { font-size: 24pt; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <header>
+    <h1>Maloe <span>Decastel</span></h1>
+    <p class="poste">Intitulé du poste</p>
+    <div class="contact">
+      <span>+41 76 617 83 37</span>
+      <span><a href="mailto:maloe.decastel@gmail.com">maloe.decastel@gmail.com</a></span>
+      <span>Châtel-St-Denis, Suisse</span>
+      <span><a href="https://linkedin.com/in/profil">linkedin.com/in/profil</a></span>
+      <span><a href="https://monsite.fr">monsite.fr</a></span>
+    </div>
+  </header>
+
+  <div class="corps">
+
+    <main>
+      <section>
+        <h2>Profil</h2>
+        <div class="bloc">
+          <p>
+            Deux à trois phrases qui résument votre parcours, votre spécialité et ce que
+            vous recherchez. Mettez en avant un résultat concret et vos points forts.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Expérience</h2>
+
+        <div class="bloc">
+          <h3>Intitulé du poste</h3>
+          <p class="meta">Entreprise · 2023 — Aujourd'hui</p>
+          <ul>
+            <li>Mission ou réalisation clé, avec un chiffre ou un impact mesurable.</li>
+            <li>Deuxième responsabilité importante.</li>
+            <li>Outil, méthode ou technologie utilisée.</li>
+          </ul>
+        </div>
+
+        <div class="bloc">
+          <h3>Intitulé du poste</h3>
+          <p class="meta">Entreprise · 2021 — 2023</p>
+          <ul>
+            <li>Mission ou réalisation clé, avec un chiffre ou un impact mesurable.</li>
+            <li>Deuxième responsabilité importante.</li>
+          </ul>
+        </div>
+
+        <div class="bloc">
+          <h3>Intitulé du poste</h3>
+          <p class="meta">Entreprise · 2019 — 2021</p>
+          <ul>
+            <li>Mission ou réalisation clé, avec un chiffre ou un impact mesurable.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>Formation</h2>
+        <div class="bloc">
+          <h3>École primaire</h3>
+          <p class="meta">Remaufens · 1H — 2H · 2016 — 2017</p>
+          <p class="meta">Ursy · 2H — 3H · 2018 — 2020</p>
+          <p class="meta">Attalens · 3H — 8H · 2020 — 2025</p>
+        </div>
+        <div class="bloc">
+          <h3>École secondaire</h3>
+          <p class="meta">CO de la Veveyse · 9H G · 2025 — 2026</p>
+          <p class="meta">CO de la Veveyse · 10H G · 2026 — aujourd'hui</p>
+        </div>
+      </section>
+    </main>
+
+    <aside class="cote">
+      <section>
+        <h2>Compétences</h2>
+        <div class="competences">
+          <span class="tag">Compétence</span>
+          <span class="tag">Compétence</span>
+          <span class="tag">Compétence</span>
+          <span class="tag">Compétence</span>
+          <span class="tag">Compétence</span>
+          <span class="tag">Compétence</span>
+          <span class="tag">Compétence</span>
+          <span class="tag">Compétence</span>
+        </div>
+      </section>
+
+      <section>
+        <h2>Langues</h2>
+        <div class="langue"><span>Français</span><span>Langue maternelle</span></div>
+        <div class="langue"><span>Anglais</span><span>Niveau scolaire</span></div>
+        <div class="langue"><span>Allemand</span><span>Niveau scolaire</span></div>
+      </section>
+
+      <section>
+        <h2>Centres d'intérêt</h2>
+        <ul class="liste-simple">
+          <li>Lecture</li>
+          <li>Dessin</li>
+          <li>Jeux vidéo</li>
+        </ul>
+      </section>
+    </aside>
+
+  </div>
+
+</div>
+
+</body>
+</html>

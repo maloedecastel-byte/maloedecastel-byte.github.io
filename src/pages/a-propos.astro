@@ -1,0 +1,134 @@
+---
+import Button from "../components/button.astro";
+import PageHeading from "../components/page-heading.astro";
+import parcours from "../collections/parcours.json";
+import Layout from "../layouts/main.astro";
+
+const base = import.meta.env.BASE_URL;
+
+const langues = [
+	{ nom: "Français", niveau: "Langue maternelle" },
+	{ nom: "Anglais", niveau: "Niveau scolaire" },
+	{ nom: "Allemand", niveau: "Niveau scolaire" },
+];
+
+const secondaire = parcours.filter((etape) => etape.niveau === "École secondaire");
+const primaire = parcours.filter((etape) => etape.niveau === "École primaire");
+---
+
+<Layout
+  title="À propos — Maloe Decastel"
+  description="Parcours scolaire, langues et centres d'intérêt de Maloe Decastel, élève au CO de la Veveyse."
+>
+  <section class="relative z-20 max-w-2xl mx-auto my-12 px-7 lg:px-0">
+    <PageHeading
+      title="À propos"
+      description="Bonjour 👋 je m'appelle Maloe Decastel. J'habite à Châtel-St-Denis, en Suisse, et je suis actuellement en 10H G au CO de la Veveyse."
+    />
+
+    <p
+      class="mt-8 text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg"
+    >
+      J'aime lire, dessiner et jouer aux jeux vidéo. Ce site rassemble mon
+      parcours scolaire et mon CV ; la version imprimable est disponible en
+      un clic.
+    </p>
+
+    <div class="mt-6">
+      <Button text="Télécharger mon CV" link={`${base}cv.html`} />
+    </div>
+
+    <h2
+      class="mt-12 mb-2 text-2xl font-bold lg:mt-16 dark:text-neutral-200"
+    >
+      Parcours scolaire
+    </h2>
+
+    <div class="mt-6">
+      <h3
+        class="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500 dark:text-neutral-400"
+      >
+        École secondaire
+      </h3>
+      <ul class="divide-y divide-neutral-200 dark:divide-neutral-800">
+        {
+          secondaire.map((etape) => (
+            <li class="flex flex-col gap-1 py-3 sm:flex-row sm:items-baseline sm:justify-between">
+              <span class="text-base font-medium text-neutral-900 dark:text-neutral-100">
+                {etape.etablissement} · {etape.cycle}
+              </span>
+              <span class="text-sm text-neutral-500 dark:text-neutral-400">
+                {etape.dates}
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+
+      <h3
+        class="mb-4 mt-10 text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500 dark:text-neutral-400"
+      >
+        École primaire
+      </h3>
+      <ul class="divide-y divide-neutral-200 dark:divide-neutral-800">
+        {
+          primaire.map((etape) => (
+            <li class="flex flex-col gap-1 py-3 sm:flex-row sm:items-baseline sm:justify-between">
+              <span class="text-base font-medium text-neutral-900 dark:text-neutral-100">
+                {etape.etablissement} · {etape.cycle}
+              </span>
+              <span class="text-sm text-neutral-500 dark:text-neutral-400">
+                {etape.dates}
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <h2 class="mt-12 mb-2 text-2xl font-bold lg:mt-16 dark:text-neutral-200">
+      Langues
+    </h2>
+    <ul class="mt-4 divide-y divide-neutral-200 dark:divide-neutral-800">
+      {
+        langues.map((langue) => (
+          <li class="flex items-baseline justify-between gap-4 py-3">
+            <span class="text-base font-medium text-neutral-900 dark:text-neutral-100">
+              {langue.nom}
+            </span>
+            <span class="text-sm text-neutral-500 dark:text-neutral-400">
+              {langue.niveau}
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+
+    <h2 class="mt-12 mb-2 text-2xl font-bold lg:mt-16 dark:text-neutral-200">
+      Centres d'intérêt
+    </h2>
+    <div class="mt-4 flex flex-wrap gap-2">
+      {
+        ["Lecture", "Dessin", "Jeux vidéo"].map((interet) => (
+          <span class="rounded-full border border-neutral-300 px-3 py-1.5 text-sm text-neutral-700 dark:border-neutral-700 dark:text-neutral-300">
+            {interet}
+          </span>
+        ))
+      }
+    </div>
+
+    <h2 class="mt-12 mb-2 text-2xl font-bold lg:mt-16 dark:text-neutral-200">
+      Me contacter
+    </h2>
+    <p
+      class="text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg"
+    >
+      Vous pouvez m'écrire à <a
+        href="mailto:maloe.decastel@gmail.com"
+        class="text-indigo-600 underline">maloe.decastel@gmail.com</a
+      > ou m'appeler au <a href="tel:+41766178337" class="text-indigo-600 underline"
+        >+41 76 617 83 37</a
+      >.
+    </p>
+  </section>
+</Layout>
