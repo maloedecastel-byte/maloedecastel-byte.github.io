@@ -13,9 +13,13 @@ Site CV statique construit avec [Astro](https://astro.build) à partir du thème
 
 ## Développement
 
-Node.js 20+ et pnpm sont requis.
+Node.js 20+ et pnpm sont requis. Sur cette machine, ils sont installés
+localement dans `~/.local` (sans droits administrateur). Il faut donc les
+ajouter au `PATH` :
 
 ```sh
+export PATH="$HOME/.local/node/bin:$HOME/.local/bin:$PATH"
+
 pnpm install
 pnpm dev      # http://localhost:4321
 pnpm build    # génère dist/
@@ -40,3 +44,17 @@ deployment → Source : GitHub Actions**.
 
 `withastro/action` détecte automatiquement l'URL du site et le chemin de base
 (`site` / `base`), donc rien à configurer dans `astro.config.mjs`.
+
+## Première publication
+
+Le dépôt est déjà configuré avec le remote `origin` vers
+`maloedecastel-byte/maloedecastel-byte.github.io`. Pour l'authentification, la
+GitHub CLI est installée dans `~/.local/bin` :
+
+```sh
+~/.local/bin/gh auth login --hostname github.com --git-protocol https --web
+gh repo create maloedecastel-byte.github.io --public --source=. --remote=origin --push
+```
+
+Puis dans le dépôt : **Settings → Pages → Source : GitHub Actions**.
+Le site sera publié sur <https://maloedecastel-byte.github.io>.
