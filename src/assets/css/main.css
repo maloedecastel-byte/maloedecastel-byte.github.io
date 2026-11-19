@@ -50,6 +50,17 @@ html.dark :focus-visible {
   outline-color: #c3bfe6;
 }
 
+/* Sélection de texte en mauve doux, dans les deux thèmes */
+::selection {
+  background: #c3bfe6;
+  color: #191831;
+}
+
+html.dark ::selection {
+  background: #6b68a4;
+  color: #ffffff;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
