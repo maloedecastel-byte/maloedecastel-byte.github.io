@@ -10,6 +10,8 @@ Site CV statique construit avec [Astro](https://astro.build) à partir du thème
 | `/`         | Accueil : présentation, parcours scolaire, langues, contact |
 | `/a-propos` | Détail du parcours, langues et centres d'intérêt            |
 | `/cv.html`  | CV A4 prêt à imprimer (fond blanc, mise en page papier)     |
+| `/cv.pdf`   | Même CV en PDF téléchargeable                               |
+| `*`         | Page 404 avec retour à l'accueil                            |
 
 ## Développement
 
@@ -24,6 +26,14 @@ pnpm install
 pnpm dev      # http://localhost:4321
 pnpm build    # génère dist/
 pnpm preview  # sert dist/ localement
+pnpm pdf      # régénère public/cv.pdf depuis public/cv.html
+```
+
+`pnpm pdf` utilise `playwright-core` et le Chromium déjà présent sur la machine.
+La génération est aussi possible à la main avec n'importe quel Chrome :
+
+```sh
+chrome --headless --print-to-pdf=public/cv.pdf public/cv.html
 ```
 
 ## Contenu
@@ -35,6 +45,9 @@ Tout le contenu personnel est centralisé :
 - `src/pages/index.astro` — accueil (langues et centres d'intérêt inclus)
 - `src/pages/a-propos.astro` — page « À propos »
 - `public/cv.html` — version imprimable du CV (nom, téléphone, e-mail)
+- `public/cv.pdf` — PDF généré depuis `public/cv.html` (`pnpm pdf`)
+- `public/og.png` — image d'aperçu pour les partages (1200 × 630)
+- `public/favicon.svg` — favicon « MD » aux couleurs du site
 
 ## Déploiement GitHub Pages
 
@@ -42,8 +55,8 @@ Le workflow `.github/workflows/deploy.yml` construit et publie le site à chaque
 push sur `main`. Dans le dépôt GitHub : **Settings → Pages → Build and
 deployment → Source : GitHub Actions**.
 
-`withastro/action` détecte automatiquement l'URL du site et le chemin de base
-(`site` / `base`), donc rien à configurer dans `astro.config.mjs`.
+L'URL publique est fixée dans `astro.config.mjs` (`site`), ce qui permet de
+générer les balises `canonical` et `og:image` en URL absolue.
 
 ## Site en ligne
 

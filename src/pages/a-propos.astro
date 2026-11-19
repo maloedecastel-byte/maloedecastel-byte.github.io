@@ -3,8 +3,11 @@ import Button from "../components/button.astro";
 import PageHeading from "../components/page-heading.astro";
 import parcours from "../collections/parcours.json";
 import Layout from "../layouts/main.astro";
+import LeafDecor from "../components/leaf-decor.astro";
 
 const base = import.meta.env.BASE_URL;
+const cvUrl = `${base}cv.html`;
+const pdfUrl = `${base}cv.pdf`;
 
 const langues = [
 	{ nom: "Français", niveau: "Langue maternelle" },
@@ -21,6 +24,9 @@ const primaire = parcours.filter((etape) => etape.niveau === "École primaire");
   description="Parcours scolaire, langues et centres d'intérêt de Maloe Decastel, élève au CO de la Veveyse."
 >
   <section class="relative z-20 max-w-2xl mx-auto my-12 px-7 lg:px-0">
+    <LeafDecor
+      class="pointer-events-none absolute -top-8 right-0 hidden h-56 w-44 text-accent/20 md:block dark:text-accent-light/15"
+    />
     <PageHeading
       title="À propos"
       description="Bonjour 👋 je m'appelle Maloe Decastel. J'habite à Châtel-St-Denis, en Suisse, et je suis actuellement en 10H G au CO de la Veveyse. Je cherche un stage en programmation."
@@ -44,8 +50,9 @@ const primaire = parcours.filter((etape) => etape.niveau === "École primaire");
       disponible en un clic.
     </p>
 
-    <div class="mt-6">
-      <Button text="Voir mon CV" link={`${base}cv.html`} />
+    <div class="mt-6 flex flex-wrap items-center gap-3">
+      <Button text="Télécharger mon CV (PDF)" link={pdfUrl} download />
+      <Button text="Version imprimable" link={cvUrl} />
     </div>
 
     <h2

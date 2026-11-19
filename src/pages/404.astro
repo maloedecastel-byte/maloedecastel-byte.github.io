@@ -1,0 +1,41 @@
+---
+import LeafDecor from "../components/leaf-decor.astro";
+import Layout from "../layouts/main.astro";
+
+const base = import.meta.env.BASE_URL;
+---
+
+<Layout title="Page introuvable — Maloe Decastel">
+  <section
+    class="relative z-20 mx-auto flex min-h-[70vh] max-w-2xl flex-col justify-center px-7 lg:px-0"
+  >
+    <LeafDecor
+      class="pointer-events-none absolute right-0 top-4 hidden h-56 w-44 text-accent/25 md:block dark:text-accent-light/20"
+    />
+
+    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-accent dark:text-accent-light">
+      Erreur 404
+    </p>
+    <h1 class="mt-3 text-4xl font-bold leading-tight text-neutral-900 dark:text-neutral-100 sm:text-5xl">
+      Cette page n'existe pas.
+    </h1>
+    <p class="mt-4 text-base text-neutral-600 dark:text-neutral-400">
+      Le lien est peut-être périmé, ou l'adresse contient une faute de frappe.
+      Le plus simple est de revenir à l'accueil.
+    </p>
+    <div class="mt-6 flex flex-wrap items-center gap-3">
+      <a
+        href={base}
+        class="inline-flex w-auto px-4 py-2 text-xs font-semibold duration-300 ease-out border rounded-full bg-accent text-white border-accent hover:bg-white hover:text-accent dark:bg-accent-light dark:text-neutral-950 dark:border-accent-light dark:hover:bg-black dark:hover:text-accent-light"
+      >
+        Retour à l'accueil
+      </a>
+      <a
+        href={`${base}cv.html`}
+        class="inline-flex w-auto px-4 py-2 text-xs font-semibold duration-300 ease-out border rounded-full border-neutral-300 text-neutral-700 hover:border-accent hover:text-accent dark:border-neutral-700 dark:text-neutral-300 dark:hover:border-accent-light dark:hover:text-accent-light"
+      >
+        Voir mon CV
+      </a>
+    </div>
+  </section>
+</Layout>
