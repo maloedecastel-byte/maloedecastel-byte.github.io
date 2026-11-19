@@ -248,11 +248,21 @@
   }
 
   @media screen and (max-width: 800px) {
-    .page { width: 100%; min-height: 0; padding: 10mm; margin: 0; }
+    .actions {
+      position: static;
+      max-width: none;
+      margin: 4mm 5mm 0;
+      justify-content: flex-end;
+    }
+    .actions a,
+    .actions button {
+      padding: 1.5mm 3mm;
+      font-size: 8.5pt;
+    }
+    .page { width: 100%; min-height: 0; padding: 10mm; margin: 4mm 0 0; }
     .corps { grid-template-columns: 1fr; gap: 8mm; }
     .cote { padding: 5mm; }
     h1 { font-size: 24pt; }
-    .actions { top: auto; bottom: 4mm; right: 4mm; }
   }
 </style>
 </head>
