@@ -17,15 +17,30 @@ let headerElement = null;
 document.addEventListener("DOMContentLoaded", () => {
 	headerElement = document.getElementById("header");
 
-	if (
-		localStorage.getItem("dark_mode") &&
-		localStorage.getItem("dark_mode") === "true"
-	) {
+	// Thème : préférence enregistrée si elle existe, sinon réglage du système
+	const enregistre = localStorage.getItem("dark_mode");
+	const sombre = window.matchMedia("(prefers-color-scheme: dark)").matches;
+	const doitEtreSombre = enregistre !== null ? enregistre === "true" : sombre;
+
+	if (doitEtreSombre) {
 		window.darkMode = true;
 		showNight();
 	} else {
 		showDay();
 	}
+
+	// Tant que l'utilisateur n'a rien choisi, on suit les changements du système
+	window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (event) => {
+		if (localStorage.getItem("dark_mode") !== null) return;
+		if (event.matches) {
+			window.darkMode = true;
+			showNight(true);
+		} else {
+			window.darkMode = false;
+			showDay(true);
+		}
+	});
+
 	stickyHeaderFuncionality();
 	applyMenuItemClasses();
 	evaluateHeaderPosition();
@@ -73,10 +88,10 @@ document.getElementById("darkToggle").addEventListener("click", () => {
 	document.documentElement.classList.add("duration-300");
 
 	if (document.documentElement.classList.contains("dark")) {
-		localStorage.removeItem("dark_mode");
+		localStorage.setItem("dark_mode", "false");
 		showDay(true);
 	} else {
-		localStorage.setItem("dark_mode", true);
+		localStorage.setItem("dark_mode", "true");
 		showNight(true);
 	}
 });
@@ -104,20 +119,27 @@ function showDay(animate) {
 			document.documentElement.classList.remove("dark");
 			document.getElementById("sun").classList.add("rising");
 		}
-		updateThemeLabel();
+		updateThemeMeta();
 	}, timeout);
 }
 
-/* Le libellé du bouton décrit l'action disponible, pas le thème affiché */
-function updateThemeLabel() {
+/* Met à jour le libellé du bouton et la couleur de la barre du navigateur */
+function updateThemeMeta() {
+	const sombre = document.documentElement.classList.contains("dark");
+
 	const bouton = document.getElementById("darkToggle");
-	if (!bouton) return;
-	bouton.setAttribute(
-		"aria-label",
-		document.documentElement.classList.contains("dark")
-			? "Activer le mode clair"
-			: "Activer le mode sombre",
-	);
+	if (bouton) {
+		bouton.setAttribute(
+			"aria-label",
+			sombre ? "Activer le mode clair" : "Activer le mode sombre",
+		);
+	}
+
+	document.querySelectorAll('meta[name="theme-color"]').forEach((meta) => meta.remove());
+	const meta = document.createElement("meta");
+	meta.name = "theme-color";
+	meta.content = sombre ? "#0a0a0a" : "#ffffff";
+	document.head.appendChild(meta);
 }
 
 function showNight(animate) {
@@ -143,7 +165,7 @@ function showNight(animate) {
 			document.documentElement.classList.add("dark");
 			document.getElementById("moon").classList.add("rising");
 		}
-		updateThemeLabel();
+		updateThemeMeta();
 	}, timeout);
 }
 

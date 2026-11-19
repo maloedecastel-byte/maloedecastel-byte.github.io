@@ -13,6 +13,10 @@ const site = Astro.site ?? new URL("https://maloedecastel-byte.github.io");
 const canonical = new URL(Astro.url.pathname, site);
 const ogImage = new URL(`${base}og.png`, site);
 
+// Statistiques de visites sans cookies (GoatCounter).
+// Laisser vide tant que le compte n'existe pas : rien n'est alors chargé.
+const analyticsCode = "";
+
 const donneesStructurees = {
 	"@context": "https://schema.org",
 	"@type": "Person",
@@ -60,18 +64,22 @@ const donneesStructurees = {
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
 
-    <!-- Used to add dark mode right away, adding here prevents any flicker -->
+    <!-- Thème appliqué avant le rendu : préférence enregistrée, sinon réglage du système -->
     <script is:inline>
-      if (typeof Storage !== 'undefined') {
-        if (
-          localStorage.getItem('dark_mode') &&
-          localStorage.getItem('dark_mode') == 'true'
-        ) {
-          document.documentElement.classList.add('dark')
-        }
-      }
+      (function () {
+        var enregistre = null;
+        try {
+          enregistre = localStorage.getItem("dark_mode");
+        } catch (e) {}
+        var sombre =
+          enregistre !== null
+            ? enregistre === "true"
+            : window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (sombre) document.documentElement.classList.add("dark");
+      })();
     </script>
 
     <style>
@@ -83,6 +91,16 @@ const donneesStructurees = {
     <link rel="alternate icon" type="image/x-icon" href={`${base}favicon.ico`} />
     <link rel="apple-touch-icon" href={`${base}favicon.svg`} />
     <script type="application/ld+json" set:html={JSON.stringify(donneesStructurees)} />
+    {
+      analyticsCode && (
+        <script
+          is:inline
+          async
+          data-goatcounter={`https://${analyticsCode}.goatcounter.com/count`}
+          src="https://gc.zgo.at/count.js"
+        />
+      )
+    }
     <Fragment set:html={import.meta.env.HEADER_INJECT} />
   </head>
   <body class="antialiased bg-white dark:bg-neutral-950">

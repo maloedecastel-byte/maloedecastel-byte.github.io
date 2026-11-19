@@ -10,9 +10,9 @@ const cvUrl = `${base}cv.html`;
 const pdfUrl = `${base}cv.pdf`;
 
 const langues = [
-	{ nom: "Français", niveau: "Langue maternelle" },
-	{ nom: "Anglais", niveau: "Niveau scolaire" },
-	{ nom: "Allemand", niveau: "Niveau scolaire" },
+	{ nom: "Français", code: "fr", niveau: "Langue maternelle" },
+	{ nom: "Anglais", code: "en", niveau: "Niveau scolaire" },
+	{ nom: "Allemand", code: "de", niveau: "Niveau scolaire" },
 ];
 
 const interets = ["Lecture", "Dessin", "Jeux vidéo"];
@@ -99,6 +99,7 @@ const qualites = [
       >
         <div class="relative z-50 w-full">
           <div
+            aria-hidden="true"
             class="absolute bottom-0 z-40 w-16 h-16 -translate-x-6 -translate-y-1/2 lg:top-auto top-0 lg:-translate-y-[330px] rounded-full"
           >
             <span
@@ -220,7 +221,7 @@ const qualites = [
           {
             langues.map((langue) => (
               <li class="flex items-baseline justify-between gap-4 py-3">
-                <span class="text-base font-medium text-neutral-900 dark:text-neutral-100">
+                <span lang={langue.code} class="text-base font-medium text-neutral-900 dark:text-neutral-100">
                   {langue.nom}
                 </span>
                 <span class="text-sm text-neutral-500 dark:text-neutral-400">

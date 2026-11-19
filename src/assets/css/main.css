@@ -4,6 +4,28 @@
 
 /* Add Your Custom CSS Here */
 
+/* Police Inter, hébergée sur le site : rendu identique partout, sans requête externe
+   Source : Inter (SIL Open Font License 1.1) — https://github.com/rsms/inter */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/assets/fonts/inter-latin-variable.woff2") format("woff2");
+}
+
+html {
+  font-family:
+    "Inter",
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+}
+
 /* Aucun débordement horizontal, même avec le décor de fond */
 html {
   overflow-x: hidden;
@@ -21,6 +43,11 @@ html {
   outline: 2px solid #6b68a4;
   outline-offset: 3px;
   border-radius: 4px;
+}
+
+/* En mode sombre, un mauve plus clair reste bien visible sur le fond foncé */
+html.dark :focus-visible {
+  outline-color: #c3bfe6;
 }
 
 @media (prefers-reduced-motion: reduce) {

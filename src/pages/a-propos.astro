@@ -10,9 +10,9 @@ const cvUrl = `${base}cv.html`;
 const pdfUrl = `${base}cv.pdf`;
 
 const langues = [
-	{ nom: "Français", niveau: "Langue maternelle" },
-	{ nom: "Anglais", niveau: "Niveau scolaire" },
-	{ nom: "Allemand", niveau: "Niveau scolaire" },
+	{ nom: "Français", code: "fr", niveau: "Langue maternelle" },
+	{ nom: "Anglais", code: "en", niveau: "Niveau scolaire" },
+	{ nom: "Allemand", code: "de", niveau: "Niveau scolaire" },
 ];
 
 const secondaire = parcours.filter((etape) => etape.niveau === "École secondaire");
@@ -27,10 +27,13 @@ const primaire = parcours.filter((etape) => etape.niveau === "École primaire");
     <LeafDecor
       class="pointer-events-none absolute -top-10 right-0 hidden h-24 w-28 text-accent/35 md:block dark:text-accent-light/25"
     />
-    <PageHeading
-      title="À propos"
-      description="Bonjour 👋 je m'appelle Maloe Decastel. J'habite à Châtel-St-Denis, en Suisse, et je suis actuellement en 10H G au CO de la Veveyse. Je cherche un stage en programmation."
-    />
+    <PageHeading title="À propos">
+      <Fragment slot="description">
+        Bonjour <span aria-hidden="true">👋</span> je m'appelle Maloe Decastel.
+        J'habite à Châtel-St-Denis, en Suisse, et je suis actuellement en 10H G
+        au CO de la Veveyse. Je cherche un stage en programmation.
+      </Fragment>
+    </PageHeading>
 
     <p
       class="mt-8 text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg"
@@ -184,7 +187,7 @@ const primaire = parcours.filter((etape) => etape.niveau === "École primaire");
       {
         langues.map((langue) => (
           <li class="flex items-baseline justify-between gap-4 py-3">
-            <span class="text-base font-medium text-neutral-900 dark:text-neutral-100">
+            <span lang={langue.code} class="text-base font-medium text-neutral-900 dark:text-neutral-100">
               {langue.nom}
             </span>
             <span class="text-sm text-neutral-500 dark:text-neutral-400">
