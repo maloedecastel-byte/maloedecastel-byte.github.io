@@ -45,7 +45,7 @@ const primaire = parcours.filter((etape) => etape.niveau === "École primaire");
     </p>
 
     <div class="mt-6">
-      <Button text="Télécharger mon CV" link={`${base}cv.html`} />
+      <Button text="Télécharger mon CV (PDF)" link={`${base}cv.pdf`} download />
     </div>
 
     <h2
@@ -57,7 +57,7 @@ const primaire = parcours.filter((etape) => etape.niveau === "École primaire");
       <h3 class="text-base font-semibold text-neutral-900 dark:text-neutral-100">
         Stage en programmation
       </h3>
-      <p class="text-sm text-neutral-500 dark:text-neutral-400">Apptitude</p>
+      <p class="text-sm text-neutral-500 dark:text-neutral-400">Apptitude · stage effectué</p>
       <ul class="mt-2 list-disc space-y-1 pl-4 text-sm text-neutral-500 dark:text-neutral-400">
         <li>
           Développement d'une petite application pour mon usage personnel, en HTML.

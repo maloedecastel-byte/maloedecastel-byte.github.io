@@ -5,7 +5,7 @@ import parcours from "../collections/parcours.json";
 import Layout from "../layouts/main.astro";
 
 const base = import.meta.env.BASE_URL;
-const cvUrl = `${base}cv.html`;
+const cvUrl = `${base}cv.pdf`;
 
 const langues = [
 	{ nom: "Français", niveau: "Langue maternelle" },
@@ -207,7 +207,7 @@ const competences = [
     </div>
   </section>
 
-  <section class="max-w-4xl mx-auto mt-24 px-7 lg:px-0">
+  <section class="max-w-4xl mx-auto mt-16 px-7 sm:mt-24 lg:px-0">
     <div
       class="rounded-2xl border border-dashed border-accent/30 bg-accent-soft/60 p-8 dark:border-accent/30 dark:bg-accent-night"
     >
@@ -222,7 +222,7 @@ const competences = [
       </p>
       <div class="flex flex-wrap items-center gap-3">
         <Button text="Envoyer un e-mail" link="mailto:maloe.decastel@gmail.com" />
-        <Button text="CV imprimable (PDF)" link={cvUrl} />
+        <Button text="Télécharger le CV (PDF)" link={cvUrl} download />
       </div>
     </div>
   </section>
