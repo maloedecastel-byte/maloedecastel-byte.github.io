@@ -205,7 +205,10 @@
     right: 6mm;
     z-index: 10;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
     gap: 2mm;
+    max-width: 70vw;
   }
 
   .actions a,
@@ -227,6 +230,19 @@
   .actions button:hover {
     background: var(--accent);
     color: #ffffff;
+  }
+
+  .actions .retour {
+    border-color: transparent;
+    background: transparent;
+    box-shadow: none;
+    color: var(--doux);
+  }
+
+  .actions .retour:hover {
+    border-color: var(--accent);
+    background: #ffffff;
+    color: var(--accent);
   }
 
   /* ---------- Impression ---------- */
@@ -256,6 +272,7 @@
 <body>
 
 <div class="actions">
+  <a class="retour" href="/">&larr; Retour au site</a>
   <a href="cv.pdf" download>Télécharger le PDF</a>
   <button type="button" onclick="window.print()">Imprimer</button>
 </div>

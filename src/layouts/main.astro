@@ -6,12 +6,36 @@ import "../assets/css/main.css";
 
 const {
 	title,
-	description = "CV en ligne de Maloe Decastel, élève au CO de la Veveyse à Châtel-St-Denis (Suisse).",
+	description = "CV en ligne de Maloe Decastel, élève en 10H G au CO de la Veveyse à Châtel-St-Denis (Suisse). Recherche un stage en programmation.",
 } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const site = Astro.site ?? new URL("https://maloedecastel-byte.github.io");
 const canonical = new URL(Astro.url.pathname, site);
 const ogImage = new URL(`${base}og.png`, site);
+
+const donneesStructurees = {
+	"@context": "https://schema.org",
+	"@type": "Person",
+	name: "Maloe Decastel",
+	url: site.toString(),
+	image: ogImage.toString(),
+	email: "mailto:maloe.decastel@gmail.com",
+	telephone: "+41 76 617 83 37",
+	jobTitle: "Élève en 10H G",
+	affiliation: {
+		"@type": "EducationalOrganization",
+		name: "CO de la Veveyse",
+	},
+	address: {
+		"@type": "PostalAddress",
+		addressLocality: "Châtel-St-Denis",
+		addressCountry: "CH",
+	},
+	knowsLanguage: ["Français", "Anglais", "Allemand"],
+	knowsAbout: ["HTML", "Programmation"],
+	description:
+		"Élève en 10H G au CO de la Veveyse, à la recherche d'un stage en programmation du 3 mai au 4 juin 2027.",
+};
 ---
 
 <!doctype html>
@@ -58,12 +82,20 @@ const ogImage = new URL(`${base}og.png`, site);
     <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
     <link rel="alternate icon" type="image/x-icon" href={`${base}favicon.ico`} />
     <link rel="apple-touch-icon" href={`${base}favicon.svg`} />
+    <script type="application/ld+json" set:html={JSON.stringify(donneesStructurees)} />
     <Fragment set:html={import.meta.env.HEADER_INJECT} />
   </head>
   <body class="antialiased bg-white dark:bg-neutral-950">
+    <a
+      href="#contenu"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-accent focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
+      >Aller au contenu</a
+    >
     <SquareLines />
     <Header />
-    <slot />
+    <main id="contenu">
+      <slot />
+    </main>
     <Footer />
     <script src="../assets/js/main.js"></script>
     <Fragment set:html={import.meta.env.FOOTER_INJECT} />
