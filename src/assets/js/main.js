@@ -135,12 +135,16 @@ function showNight(animate) {
 
 window.applyMenuItemClasses = () => {
 	const menuItems = document.querySelectorAll("#menu a");
+	// Normalise la barre oblique finale : /a-propos et /a-propos/ sont équivalents
+	const normalise = (chemin) => chemin.replace(/\/+$/, "") || "/";
+	const pageActuelle = normalise(window.location.pathname);
+
 	for (let i = 0; i < menuItems.length; i++) {
-		if (menuItems[i].pathname === window.location.pathname) {
+		if (normalise(menuItems[i].pathname) === pageActuelle) {
 			menuItems[i].classList.add("text-neutral-900", "dark:text-white");
+			menuItems[i].setAttribute("aria-current", "page");
 		}
 	}
-	//:class="{ 'text-neutral-900 dark:text-white': window.location.pathname == '{menu.url}', 'text-neutral-700 dark:text-neutral-400': window.location.pathname != '{menu.url}' }"
 };
 
 function mobileMenuFunctionality() {

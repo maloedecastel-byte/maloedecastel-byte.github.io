@@ -84,8 +84,12 @@
   main {
     display: flex;
     flex-direction: column;
-    gap: 10mm;
+    gap: 12mm;
   }
+
+  /* Un peu plus d'air sous le bloc de stage */
+  main > section > .bloc { margin-bottom: 7mm; }
+  main > section > .bloc:last-child { margin-bottom: 2mm; }
 
   h2 {
     margin: 0 0 4mm;
