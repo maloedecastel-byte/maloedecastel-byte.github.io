@@ -45,16 +45,10 @@ deployment → Source : GitHub Actions**.
 `withastro/action` détecte automatiquement l'URL du site et le chemin de base
 (`site` / `base`), donc rien à configurer dans `astro.config.mjs`.
 
-## Première publication
+## Site en ligne
 
-Le dépôt est déjà configuré avec le remote `origin` vers
-`maloedecastel-byte/maloedecastel-byte.github.io`. Pour l'authentification, la
-GitHub CLI est installée dans `~/.local/bin` :
+Le site est publié sur <https://maloedecastel-byte.github.io> depuis le dépôt
+`maloedecastel-byte/maloedecastel-byte.github.io`.
 
-```sh
-~/.local/bin/gh auth login --hostname github.com --git-protocol https --web
-gh repo create maloedecastel-byte.github.io --public --source=. --remote=origin --push
-```
-
-Puis dans le dépôt : **Settings → Pages → Source : GitHub Actions**.
-Le site sera publié sur <https://maloedecastel-byte.github.io>.
+Chaque push sur `main` déclenche le workflow `Deploy to GitHub Pages` :
+GitHub Actions construit le site et le republie (environ 1 à 2 minutes).
