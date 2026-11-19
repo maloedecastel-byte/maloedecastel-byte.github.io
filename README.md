@@ -24,7 +24,6 @@ pnpm install
 pnpm dev      # http://localhost:4321
 pnpm build    # génère dist/
 pnpm preview  # sert dist/ localement
-pnpm pdf      # régénère public/cv.pdf depuis public/cv.html
 ```
 
 ## Contenu
