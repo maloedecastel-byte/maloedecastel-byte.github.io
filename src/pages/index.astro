@@ -15,15 +15,15 @@ const langues = [
 
 const interets = ["Lecture", "Dessin", "Jeux vidéo"];
 
-const competences = [
-	"HTML (notions)",
+const qualites = [
 	"Curiosité",
 	"Apprentissage continu",
 	"Écoute active",
 	"Communication",
-	"Flexibilité",
+	"Inventivité",
 	"Motivation",
 	"Implication",
+	"Aisance avec les chiffres",
 ];
 ---
 
@@ -148,17 +148,28 @@ const competences = [
     </div>
   </section>
 
-  <Separator text="Compétences et langues" />
+  <Separator text="Qualités et langues" />
 
   <section class="max-w-4xl mx-auto px-7 lg:px-0">
     <h2
       class="mb-4 text-2xl font-bold leading-10 tracking-tight text-neutral-900 dark:text-neutral-100"
     >
-      Compétences
+      Compétences techniques
+    </h2>
+    <div class="mb-10 flex flex-wrap gap-2">
+      <span class="rounded-full border border-accent/25 bg-accent-soft px-3 py-1.5 text-sm text-accent dark:border-accent/30 dark:bg-accent-night dark:text-accent-light">
+        HTML · notions
+      </span>
+    </div>
+
+    <h2
+      class="mb-4 text-2xl font-bold leading-10 tracking-tight text-neutral-900 dark:text-neutral-100"
+    >
+      Qualités
     </h2>
     <div class="mb-14 flex flex-wrap gap-2">
       {
-        competences.map((competence) => (
+        qualites.map((competence) => (
           <span class="rounded-full border border-accent/25 bg-accent-soft px-3 py-1.5 text-sm text-accent dark:border-accent/30 dark:bg-accent-night dark:text-accent-light">
             {competence}
           </span>

@@ -89,19 +89,31 @@ const primaire = parcours.filter((etape) => etape.niveau === "École primaire");
     <h2
       class="mt-12 mb-2 text-2xl font-bold lg:mt-16 dark:text-neutral-200"
     >
-      Compétences
+      Compétences techniques
+    </h2>
+    <p
+      class="mt-4 text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:text-base"
+    >
+      <strong class="text-neutral-900 dark:text-neutral-100">HTML</strong> — notions,
+      utilisées pour développer une petite application personnelle.
+    </p>
+
+    <h2
+      class="mt-12 mb-2 text-2xl font-bold lg:mt-16 dark:text-neutral-200"
+    >
+      Qualités
     </h2>
     <div class="mt-4 flex flex-wrap gap-2">
       {
         [
-          "HTML (notions)",
           "Curiosité",
           "Apprentissage continu",
           "Écoute active",
           "Communication",
-          "Flexibilité",
+          "Inventivité",
           "Motivation",
           "Implication",
+          "Aisance avec les chiffres",
         ].map((competence) => (
           <span class="rounded-full border border-accent/25 bg-accent-soft px-3 py-1.5 text-sm text-accent dark:border-accent/30 dark:bg-accent-night dark:text-accent-light">
             {competence}
