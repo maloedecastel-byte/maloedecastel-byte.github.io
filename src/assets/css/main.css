@@ -4,9 +4,21 @@
 
 /* Add Your Custom CSS Here */
 
+/* Aucun débordement horizontal, même avec le décor de fond */
+html {
+  overflow-x: hidden;
+}
+
+@supports (overflow: clip) {
+  html,
+  body {
+    overflow-x: clip;
+  }
+}
+
 /* Repère de focus visible, y compris pour la navigation au clavier */
 :focus-visible {
-  outline: 2px solid #7471b3;
+  outline: 2px solid #6b68a4;
   outline-offset: 3px;
   border-radius: 4px;
 }

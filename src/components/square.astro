@@ -1,2 +1,7 @@
-<div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}">
-</div>
+---
+// Case de la trame de fond : simple bloc souple, sans largeur imposée,
+// pour ne jamais déborder horizontalement, même sur petit écran.
+const { classes = "" } = Astro.props;
+---
+
+<div class:list={["w-full min-w-0 h-full bg-white dark:bg-neutral-950", classes]}></div>

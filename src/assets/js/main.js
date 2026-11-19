@@ -104,7 +104,20 @@ function showDay(animate) {
 			document.documentElement.classList.remove("dark");
 			document.getElementById("sun").classList.add("rising");
 		}
+		updateThemeLabel();
 	}, timeout);
+}
+
+/* Le libellé du bouton décrit l'action disponible, pas le thème affiché */
+function updateThemeLabel() {
+	const bouton = document.getElementById("darkToggle");
+	if (!bouton) return;
+	bouton.setAttribute(
+		"aria-label",
+		document.documentElement.classList.contains("dark")
+			? "Activer le mode clair"
+			: "Activer le mode sombre",
+	);
 }
 
 function showNight(animate) {
@@ -130,6 +143,7 @@ function showNight(animate) {
 			document.documentElement.classList.add("dark");
 			document.getElementById("moon").classList.add("rising");
 		}
+		updateThemeLabel();
 	}, timeout);
 }
 
@@ -155,10 +169,24 @@ function mobileMenuFunctionality() {
 	document.getElementById("closeMenu").addEventListener("click", () => {
 		closeMobileMenu();
 	});
+
+	// Échap ferme le menu, comme sur la plupart des sites
+	document.addEventListener("keydown", (event) => {
+		if (event.key !== "Escape") return;
+		const menu = document.getElementById("menu");
+		if (
+			menu &&
+			!menu.classList.contains("hidden") &&
+			window.matchMedia("(max-width: 639px)").matches
+		) {
+			closeMobileMenu();
+		}
+	});
 }
 
 window.openMobileMenu = () => {
 	document.getElementById("openMenu").classList.add("hidden");
+	document.getElementById("openMenu").setAttribute("aria-expanded", "true");
 	document.getElementById("closeMenu").classList.remove("hidden");
 	document.getElementById("menu").classList.remove("hidden");
 	document.getElementById("mobileMenuBackground").classList.add("opacity-0");
@@ -169,11 +197,16 @@ window.openMobileMenu = () => {
 			.getElementById("mobileMenuBackground")
 			.classList.remove("opacity-0");
 	}, 1);
+
+	// Le focus suit l'ouverture : le clavier peut fermer ou parcourir les liens
+	document.getElementById("closeMenu").focus();
 };
 
 window.closeMobileMenu = () => {
 	document.getElementById("closeMenu").classList.add("hidden");
 	document.getElementById("openMenu").classList.remove("hidden");
+	document.getElementById("openMenu").setAttribute("aria-expanded", "false");
 	document.getElementById("menu").classList.add("hidden");
 	document.getElementById("mobileMenuBackground").classList.add("hidden");
+	document.getElementById("openMenu").focus();
 };
